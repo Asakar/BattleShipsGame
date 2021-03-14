@@ -8,7 +8,7 @@ import java.util.Random;
 public class BattleShipGame {
 
     private static String[][] board = new String[10][10];
-    private static int noOfBattleShips = 2;
+    private static int noOfBattleShips = 3;
     private static int noOfDestroyers = 3;
     private static int noOfBattleShipsPlaced = 0;
 
@@ -96,8 +96,8 @@ public class BattleShipGame {
             }
         }
         for (Integer place : places) {
-            System.out.println(row + " " + place);
-            board[row][place] = "ship";
+            System.out.println(place + " " + position);
+            board[place][position] = "ship";
         }
     }
 
