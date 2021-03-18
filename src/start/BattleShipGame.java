@@ -16,12 +16,13 @@ public class BattleShipGame {
 
     public static void startGame() {
         Scanner scanner = new Scanner(System.in);
+        Printer.printInstructions();
         GameBoardController.initializeBoard(computerBoard);
         GameBoardController.initializeBoard(playerBoard);
         GameBoardController.addShip(computerBoard, destroyer, 1);
         GameBoardController.addShip(computerBoard, battleShip, 1);
         Printer.printBoard(playerBoard);
-        Printer.printBoard(computerBoard);
+//        Printer.printBoard(computerBoard);
         int noOfHitsRequired = destroyer.getSize() + battleShip.getSize();
         int hits = 0;
         int selectedRow;

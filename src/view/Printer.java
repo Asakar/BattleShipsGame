@@ -22,4 +22,12 @@ public class Printer {
         }
     }
 
+    public static void printInstructions() {
+        System.out.println("There are two ships which need destroying:");
+        System.out.println("A destroyer which takes up 2 spaces and a battleship that takes up 4 spaces.");
+        System.out.println("These ships will be randomly placed on the board either horizontally or vertically.");
+        System.out.println("Once all ships have been destroyed you win.");
+        System.out.println();
+    }
+
 }
