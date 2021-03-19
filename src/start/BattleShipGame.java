@@ -3,6 +3,7 @@ package start;
 import contoller.GameBoardController;
 import model.Ship;
 import model.GameBoard;
+import org.w3c.dom.ls.LSOutput;
 import view.Printer;
 
 import java.util.Scanner;
@@ -22,7 +23,6 @@ public class BattleShipGame {
         GameBoardController.addShip(computerBoard, destroyer, 1);
         GameBoardController.addShip(computerBoard, battleShip, 1);
         Printer.printBoard(playerBoard);
-//        Printer.printBoard(computerBoard);
         int noOfHitsRequired = destroyer.getSize() + battleShip.getSize();
         int hits = 0;
         int selectedRow;
@@ -30,6 +30,11 @@ public class BattleShipGame {
         while (hits < noOfHitsRequired) {
             String input = scanner.next();
             input = checkInput(scanner, input);
+            if (input.matches("quit")) {
+                System.out.println("see the ship positions above.");
+                System.out.println("Thank you for playing.");
+                break;
+            }
             String temp = input.replaceAll("\\d", "");
             selectedRow = Rows.valueOf(temp).getRow() - 1;
             selectedColumn = Integer.parseInt(input.replaceAll("[A-Z]", "")) - 1;
@@ -45,12 +50,17 @@ public class BattleShipGame {
             }
             Printer.printBoard(playerBoard);
         }
-        System.out.println("All ships sunk");
+        if (hits == noOfHitsRequired) {
+            System.out.println("All ships sunk");
+        }
     }
 
     private static String checkInput(Scanner scanner, String input) {
         while (true) {
             if (input.matches("[A-J][0-9]+")) {
+                break;
+            } else if (input.matches("(quit)")) {
+                Printer.printBoard(computerBoard);
                 break;
             } else {
                 System.out.println("incorrect input");
@@ -82,23 +92,6 @@ public class BattleShipGame {
             default:
                 return null;
         }
-    }
-
-    public static void main(String[] args) {
-        startGame();
-//        initializeBoard();
-//        addBattleShips(1);
-//        printBoard();
-//        int rows = Rows.valueOf("B").getRow();
-//        System.out.println(rows);
-//        String a = "D9";
-//        System.out.println(a.replaceAll("\\d", ""));
-//        System.out.println(board[1].length);
-//        for (int i = 0; i < board.length; i++) {
-//            for (int j = 0; j < board[i].length; j++) {
-//                System.out.println(board[i][j]);
-//            }
-//        }
     }
 
 }
