@@ -1,6 +1,6 @@
 # BattleShipsGame
 
-This is a one sided battleship game where you have to sink the computers randomly placed ships. The MVC design pattern is used here. Currently there is no GUI.
+This is a one sided battleship game where you have to sink the computers randomly placed ships. The MVC design pattern is implemented here. Currently there is no GUI.
 Everything related to the game is printed to the terminal.
 
 To run the application:
