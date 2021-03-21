@@ -22,7 +22,6 @@ public class BattleShipGame {
         GameBoardController.addShip(computerBoard, destroyer, 1);
         GameBoardController.addShip(computerBoard, battleShip, 1);
         Printer.printBoard(playerBoard);
-        Printer.printBoard(computerBoard);
         final int noOfHitsRequired = destroyer.getSize() + battleShip.getSize();
         int hits = 0;
         int selectedRow;
