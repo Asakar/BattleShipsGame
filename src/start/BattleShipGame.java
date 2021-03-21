@@ -9,10 +9,10 @@ import java.util.Scanner;
 
 public class BattleShipGame {
 
-    private static GameBoard computerBoard = new GameBoard(10, 10);
-    private static GameBoard playerBoard = new GameBoard(10, 10);
-    private static Ship destroyer = new Ship(2, "destroyer");
-    private static Ship battleShip = new Ship(4, "battle ship");
+    private static final GameBoard computerBoard = new GameBoard(10, 10);
+    private static final GameBoard playerBoard = new GameBoard(10, 10);
+    private static final Ship destroyer = new Ship(2, "destroyer");
+    private static final Ship battleShip = new Ship(4, "battle ship");
 
     public static void startGame() {
         Scanner scanner = new Scanner(System.in);
@@ -22,7 +22,8 @@ public class BattleShipGame {
         GameBoardController.addShip(computerBoard, destroyer, 1);
         GameBoardController.addShip(computerBoard, battleShip, 1);
         Printer.printBoard(playerBoard);
-        int noOfHitsRequired = destroyer.getSize() + battleShip.getSize();
+        Printer.printBoard(computerBoard);
+        final int noOfHitsRequired = destroyer.getSize() + battleShip.getSize();
         int hits = 0;
         int selectedRow;
         int selectedColumn;
