@@ -3,7 +3,6 @@ package start;
 import contoller.GameBoardController;
 import model.Ship;
 import model.GameBoard;
-import org.w3c.dom.ls.LSOutput;
 import view.Printer;
 
 import java.util.Scanner;
@@ -29,12 +28,13 @@ public class BattleShipGame {
         int selectedColumn;
         while (hits < noOfHitsRequired) {
             String input = scanner.next();
-            input = checkInput(scanner, input);
             if (input.matches("quit")) {
+                Printer.printBoard(computerBoard);
                 System.out.println("see the ship positions above.");
                 System.out.println("Thank you for playing.");
                 break;
             }
+            input = checkInput(scanner, input);
             String temp = input.replaceAll("\\d", "");
             selectedRow = Rows.valueOf(temp).getRow() - 1;
             selectedColumn = Integer.parseInt(input.replaceAll("[A-Z]", "")) - 1;
@@ -58,9 +58,6 @@ public class BattleShipGame {
     private static String checkInput(Scanner scanner, String input) {
         while (true) {
             if (input.matches("[A-J][0-9]+")) {
-                break;
-            } else if (input.matches("(quit)")) {
-                Printer.printBoard(computerBoard);
                 break;
             } else {
                 System.out.println("incorrect input");
