@@ -30,4 +30,10 @@ public class Printer {
         System.out.println();
     }
 
+    public static void quitGame(GameBoard gameBoard) {
+        Printer.printBoard(gameBoard);
+        System.out.println("see the ship positions above.");
+        System.out.println("Thank you for playing.");
+    }
+
 }

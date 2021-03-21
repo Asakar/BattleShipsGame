@@ -14,45 +14,58 @@ public class BattleShipGame {
     private static final Ship destroyer = new Ship(2, "destroyer");
     private static final Ship battleShip = new Ship(4, "battle ship");
 
-    public static void startGame() {
+    public static void playGame() {
         Scanner scanner = new Scanner(System.in);
-        Printer.printInstructions();
-        GameBoardController.initializeBoard(computerBoard);
-        GameBoardController.initializeBoard(playerBoard);
-        GameBoardController.addShip(computerBoard, destroyer, 1);
-        GameBoardController.addShip(computerBoard, battleShip, 1);
-        Printer.printBoard(playerBoard);
         final int noOfHitsRequired = destroyer.getSize() + battleShip.getSize();
         int hits = 0;
         int selectedRow;
         int selectedColumn;
+        setup();
         while (hits < noOfHitsRequired) {
             String input = scanner.next();
             if (input.matches("quit")) {
-                Printer.printBoard(computerBoard);
-                System.out.println("see the ship positions above.");
-                System.out.println("Thank you for playing.");
+                Printer.quitGame(computerBoard);
                 break;
             }
             input = checkInput(scanner, input);
-            String temp = input.replaceAll("\\d", "");
-            selectedRow = Rows.valueOf(temp).getRow() - 1;
-            selectedColumn = Integer.parseInt(input.replaceAll("[A-Z]", "")) - 1;
-            String boardValue = computerBoard.getBoard()[selectedRow][selectedColumn];
+            selectedRow = getSelectedRow(input);
+            selectedColumn = getSelectedColumn(input);
+            String boardValue = computerBoard.getValue(selectedRow, selectedColumn);
             if (!boardValue.equals(".")) {
-                playerBoard.getBoard()[selectedRow][selectedColumn] = ("x");
+                playerBoard.setValue(selectedRow, selectedColumn, "x");
                 updateShipDamage(boardValue);
                 evaluateShip(boardValue);
                 hits++;
             } else {
                 System.out.println("miss");
-                playerBoard.getBoard()[selectedRow][selectedColumn] = ("o");
+                playerBoard.setValue(selectedRow, selectedColumn, "o");
             }
             Printer.printBoard(playerBoard);
         }
         if (hits == noOfHitsRequired) {
             System.out.println("All ships sunk");
         }
+    }
+
+    private static int getSelectedColumn(String input) {
+        return Integer.parseInt(input.replaceAll("[A-Z]", "")) - 1;
+    }
+
+    private static int getSelectedRow(String input) {
+        int selectedRow;
+        String temp = input.replaceAll("\\d", "");
+        selectedRow = Rows.valueOf(temp).getRow() - 1;
+        return selectedRow;
+    }
+
+    private static void setup() {
+        Printer.printInstructions();
+        GameBoardController.initializeBoard(computerBoard);
+        GameBoardController.initializeBoard(playerBoard);
+        GameBoardController.addShip(computerBoard, destroyer, 1);
+        GameBoardController.addShip(computerBoard, battleShip, 1);
+        Printer.printBoard(playerBoard);
+        Printer.printBoard(computerBoard);
     }
 
     private static String checkInput(Scanner scanner, String input) {
