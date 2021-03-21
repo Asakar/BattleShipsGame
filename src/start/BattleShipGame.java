@@ -57,7 +57,7 @@ public class BattleShipGame {
 
     private static String checkInput(Scanner scanner, String input) {
         while (true) {
-            if (input.matches("[A-J][0-9]+")) {
+            if (input.matches("[A-J][1-9]") || input.matches("[A-J]10")) {
                 break;
             } else {
                 System.out.println("incorrect input");
