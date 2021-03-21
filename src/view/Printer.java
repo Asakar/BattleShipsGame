@@ -1,6 +1,7 @@
 package view;
 
 import model.GameBoard;
+import model.Ship;
 import start.Rows;
 
 public class Printer {
@@ -35,5 +36,11 @@ public class Printer {
         System.out.println("see the ship positions above.");
         System.out.println("Thank you for playing.");
     }
+
+    public static void message(Object sentence) {
+        System.out.println(sentence);
+    }
+
+
 
 }

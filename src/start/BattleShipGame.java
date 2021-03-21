@@ -37,13 +37,13 @@ public class BattleShipGame {
                 evaluateShip(boardValue);
                 hits++;
             } else {
-                System.out.println("miss");
+                Printer.message("miss");
                 playerBoard.setValue(selectedRow, selectedColumn, "o");
             }
             Printer.printBoard(playerBoard);
-        }
-        if (hits == noOfHitsRequired) {
-            System.out.println("All ships sunk");
+            if (hits == noOfHitsRequired) {
+                Printer.message("All ships sunk");
+            }
         }
     }
 
@@ -65,7 +65,6 @@ public class BattleShipGame {
         GameBoardController.addShip(computerBoard, destroyer, 1);
         GameBoardController.addShip(computerBoard, battleShip, 1);
         Printer.printBoard(playerBoard);
-        Printer.printBoard(computerBoard);
     }
 
     private static String checkInput(Scanner scanner, String input) {
@@ -73,7 +72,7 @@ public class BattleShipGame {
             if (input.matches("[A-J][1-9]") || input.matches("[A-J]10")) {
                 break;
             } else {
-                System.out.println("incorrect input");
+                Printer.message("incorrect input");
                 input = scanner.next();
             }
         }
@@ -87,9 +86,9 @@ public class BattleShipGame {
     public static void evaluateShip(String boardValue) {
         Ship temp = getShipType(boardValue);
         if (temp.getDamage() == temp.getSize()) {
-            System.out.println(temp.getName() + " sunk!");
+            Printer.message(temp.getName() + " sunk!");
         } else {
-            System.out.println("hit " + temp.getName());
+            Printer.message("hit " + temp.getName());
         }
     }
 
