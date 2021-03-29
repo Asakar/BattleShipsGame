@@ -5,20 +5,18 @@ import model.Ship;
 import model.GameBoard;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GameBoardController {
 
     private static String sea = ".";
 
-    public static String[][] initializeBoard(GameBoard gameBoard) {
-        String[][] board = gameBoard.getBoard();
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                board[i][j] = sea;
-            }
+    public static void initializeBoard(GameBoard gameBoard) {
+//        String[][] board = gameBoard.getBoard();
+        for (String[] strings : gameBoard.getBoard()) {
+            Arrays.fill(strings, sea);
         }
-        return board;
     }
 
     public static void addShip(GameBoard gameBoard, Ship ship, int noOfShips) {

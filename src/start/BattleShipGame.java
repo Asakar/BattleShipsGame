@@ -85,6 +85,7 @@ public class BattleShipGame {
 
     public static void evaluateShip(String boardValue) {
         Ship temp = getShipType(boardValue);
+        assert temp != null;
         if (temp.getDamage() == temp.getSize()) {
             Printer.message(temp.getName() + " sunk!");
         } else {
