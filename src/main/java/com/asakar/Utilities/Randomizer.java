@@ -1,6 +1,4 @@
-package Utilities;
-
-import java.util.Random;
+package com.asakar.Utilities;
 
 public class Randomizer {
 

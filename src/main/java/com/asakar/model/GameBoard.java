@@ -1,4 +1,4 @@
-package model;
+package com.asakar.model;
 
 public class GameBoard {
 

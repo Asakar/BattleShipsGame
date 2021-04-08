@@ -1,11 +1,10 @@
-package start;
+package com.asakar.start;
 
-import contoller.GameBoardController;
-import model.Ship;
-import model.GameBoard;
-import view.Printer;
-
+import com.asakar.controller.GameBoardController;
+import com.asakar.model.Ship;
+import com.asakar.model.GameBoard;
 import java.util.Scanner;
+import com.asakar.view.Printer;
 
 public class BattleShipGame {
 
@@ -79,11 +78,11 @@ public class BattleShipGame {
         return input;
     }
 
-    public static void updateShipDamage(String boardValue) {
+    private static void updateShipDamage(String boardValue) {
         getShipType(boardValue).incrementDamage();
     }
 
-    public static void evaluateShip(String boardValue) {
+    private static void evaluateShip(String boardValue) {
         Ship temp = getShipType(boardValue);
         assert temp != null;
         if (temp.getDamage() == temp.getSize()) {
@@ -93,7 +92,7 @@ public class BattleShipGame {
         }
     }
 
-    public static Ship getShipType(String boardValue) {
+    private static Ship getShipType(String boardValue) {
         switch (boardValue) {
             case "b":
                 return BattleShipGame.battleShip;

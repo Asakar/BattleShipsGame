@@ -1,8 +1,8 @@
-package contoller;
+package com.asakar.controller;
 
-import Utilities.Randomizer;
-import model.Ship;
-import model.GameBoard;
+import com.asakar.Utilities.Randomizer;
+import com.asakar.model.Ship;
+import com.asakar.model.GameBoard;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +13,6 @@ public class GameBoardController {
     private static String sea = ".";
 
     public static void initializeBoard(GameBoard gameBoard) {
-//        String[][] board = gameBoard.getBoard();
         for (String[] strings : gameBoard.getBoard()) {
             Arrays.fill(strings, sea);
         }
@@ -24,7 +23,7 @@ public class GameBoardController {
         while (noOfShipsPlaced < noOfShips) {
             String[] orientationOfShip =  {"horizontal","vertical"};
             String orientation = orientationOfShip[Randomizer.getRandomInRange(0,orientationOfShip.length)];
-            if (orientation.equals("horizontal")) {
+            if (orientation.equals("S")) {
                 gameBoard.setBoard(placeShipHorizontally(gameBoard, ship));
             } else {
                 gameBoard.setBoard(placeShipVertically(gameBoard, ship));

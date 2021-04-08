@@ -1,8 +1,7 @@
-package view;
+package com.asakar.view;
 
-import model.GameBoard;
-import model.Ship;
-import start.Rows;
+import com.asakar.model.GameBoard;
+import com.asakar.start.Rows;
 
 public class Printer {
 

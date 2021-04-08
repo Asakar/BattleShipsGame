@@ -5,7 +5,7 @@ Everything related to the game is printed to the terminal.
 
 To run the application:
 git clone the project.
-Run the main method found in the start/App class. 
+Run the main method found in the com.asakar.start/App class. 
 If you wish to quit the game early enter quit and the game shall print the board with the ships on it and end the application.
 The image below shows the application running.
 
